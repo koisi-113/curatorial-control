@@ -1,5 +1,13 @@
 {
+  
+ 
+  
   "compilerOptions": {
+  "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "ES2017",
+    "module": "commonjs",
+    "lib": ["es2017"]
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
