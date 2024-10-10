@@ -1,0 +1,36 @@
+{% extends "base.njk" %}
+{% block title %}更新画面{% endblock %}
+{% block script %}
+{% endblock %}
+{% block content %}
+<div class="bookupdate-form">
+  <div class="pb-2 border-bottom mb-3">
+  <form method="post" action="/books/{{ book.id }}/put">
+   <textarea name="name" class="form-control" id="name" rows="1" placeholder="更新したい本の名前" required></textarea>
+    <select name="categoryId" class="form-control" id="categoryId" required>
+    <option value="" disabled selected>更新したいカテゴリを選択</option>
+    {% for category in categories %}
+    <option value="{{ category.id }}">{{ category.name }}</option>
+    {% endfor %}
+    </select>
+    <textarea name="author" class="form-control" id="author" rows="1" placeholder="更新したい本の著者名" required></textarea>
+    <textarea name="isbn" class="form-control" id="isbn" rows="1" placeholder="更新したい本のisbn" required></textarea>
+    <textarea name="publisher" class="form-control" id="publisher" rows="1" placeholder="更新したい本の出版社" required></textarea>
+    <textarea name="is_borrowing" class="form-control" id="is_borrowing" rows="1" placeholder="借りてるかどうか" required></textarea>
+    <select name="userId" class="form-control" id="useryId" required>
+    <option value="" disabled selected>更新したいユーザーを選択</option>
+    {% for user in users %}
+    <option value="{{ user.id }}">{{ user.name }} {{user.grade }}</option>
+    {% endfor %}
+    </select>
+    <p id="warning" class="text-danger"></p>
+    <div class="mt-2 me-2 text-end">
+      <input type="submit" id="submitButton" class="btn btn-primary " value="本を更新する">
+    </div>
+  </form>
+  </div>
+</div>
+<div class="text-end">
+  <a class="btn btn-primary" href="/books">本を追加する</a>
+</div>
+{% endblock %}

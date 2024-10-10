@@ -1,0 +1,17 @@
+{% extends "base.njk" %}
+{% block title %}ユーザー追加画面{% endblock %}
+{% block content %}
+<div class="pb-2 border-bottom mb-3">
+  <form method="post" action="/books/users">
+    <label for="name" name="form-label">ユーザー名と学年</label>
+    <input id="name" name="name" type="text" class="form-control" required>
+    <input id="grade" name="grade" type="text" class="form-control" required>
+    <div class="mt-2 text-end">
+      <input type="submit" class="btn btn-primary" value="ユーザーを追加">
+    </div>
+  </form>
+</div>
+<div class="text-end">
+  <a class="btn btn-primary" href="/books">本を追加する</a>
+</div>
+{% endblock %}
