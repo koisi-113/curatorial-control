@@ -3,32 +3,61 @@
 {% block script %}
 {% endblock %}
 {% block content %}
-<form class="text-end mb-3" method="get" action="/books/users">
+<div style="display: flex; justify-content: flex-end; gap: 10px;">
+    <a href="/books/users">
+      <img src="public/images/User-Button1.png" onMouseOver="this.src='public/images/User-Button2.png'" onMouseOut="this.src='public/images/User-Button1.png'" class="rounded float-end" width="55" height="50"/>
+    </a>
+    <a href="/books/categories">
+      <img src="public/images/Category-Button1.png" onMouseOver="this.src='public/images/Category-Button2.png'" onMouseOut="this.src='public/images/Category-Button1.png'" class="rounded float-end" width="55" height="50"/>
+    </a>
+</div>
+
+<!--<form class="text-end mb-3" method="get" action="/books/users">
   <input type="submit" class="btn btn-primary" value="ユーザーを追加する">
-</form>
-<form class="text-end mb-3" method="get" action="/books/categories">
+</form>-->
+<!--<form class="text-end mb-3" method="get" action="/books/categories">
   <input type="submit" class="btn btn-primary" value="カテゴリを追加する">
-</form>
+</form>-->
+
 <div class="book-form">
-  <div class="pb-2 border-bottom mb-3">
+  <div class="pb-2 border-bottom mb-3 grid gap-0 row-gap-3">
   <form method="post" action="http://localhost:3000/books">
-    <textarea name="name" class="form-control" id="name" rows="1" placeholder="追加したい本の名前" required></textarea>
-    <select name="categoryId" class="form-control" id="categoryId" required>
-    <option value="" disabled selected>カテゴリを選択</option>
-    {% for category in categories %}
-    <option value="{{ category.id }}">{{ category.name }}</option>
-    {% endfor %}
-    </select>
-    <textarea name="author" class="form-control" id="author" rows="1" placeholder="追加したい本の著者名" required></textarea>
-    <textarea name="isbn" class="form-control" id="isbn" rows="1" placeholder="追加したい本のisbn" required></textarea>
-    <textarea name="publisher" class="form-control" id="publisher" rows="1" placeholder="追加したい本の出版社" required></textarea>
+    <div class="p-2 g-col-6">
+      <label for="name">本の名前</label>
+      <textarea name="name" class="form-control" id="name" rows="1" placeholder="追加したい本の名前" required></textarea>
+    </div>
+    <div class="p-2 g-col-6">
+      <label for="categoryId">カテゴリ</label>
+      <select name="categoryId" class="form-control p-2 g-col-6" id="categoryId" required>
+      <option value="" disabled selected>カテゴリを選択</option>
+      {% for category in categories %}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+      {% endfor %}
+      </select>
+    </div>
+    <div class="p-2 g-col-6">
+      <label for="author">著者名</label>
+      <textarea name="author" class="form-control" id="author p-2 g-col-6" rows="1" placeholder="追加したい本の著者名" required></textarea>
+    </div>
+    <div class="p-2 g-col-6">
+      <label for="isbn">isbn</label>
+      <textarea name="isbn" class="form-control" id="isbn p-2 g-col-6" rows="1" placeholder="追加したい本のisbn" required></textarea>
+    </div>
+    <div class="p-2 g-col-6">
+      <label for="publisher">出版社</label>
+      <textarea name="publisher" class="form-control" id="publisher p-2 g-col-6" rows="1" placeholder="追加したい本の出版社" required></textarea>
+    </div>
+    <!--
+    <label for="is_borrowing">借りているか</label>
     <textarea name="is_borrowing" class="form-control" id="is_borrowing" rows="1" placeholder="借りてるかどうか" required></textarea>
-    <select name="userId" class="form-control" id="useryId" required>
+    <label for="userId">ユーザー</label>
+    <select name="userId" class="form-control" id="userId" required>
     <option value="" disabled selected>ユーザーを選択</option>
     {% for user in users %}
     <option value="{{ user.id }}">{{ user.name }} {{ user.grade }}</option>
     {% endfor %}
     <p id="warning" class="text-danger"></p>
+    -->
     <div class="mt-2 me-2 text-end">
       <input type="submit" id="submitButton" class="btn btn-primary " value="本を追加する">
     </div>
