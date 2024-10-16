@@ -73,10 +73,10 @@
     <div class="border border-radius mb-2 m-2 p-2  d-flex justify-content-between align-items-center">
     <p class="mb-0">{{ post.name }} {{ post.category.name }} {{ post.author }} {{ post.isbn }} {{ post.publisher }} {{ post.is_borrowing }} {{ post.user.name}} {{ post.user.grade }}</p>
     <div>
-      <form class="d-inline me-2" method="get" action="/books/{{ post.id }}/put">
+      <form class="d-inline me-2" method="GET" action="/books/{{ post.id }}/put">
         <input type="submit" class="btn btn-warning btn-sm" value="更新">
       </form>
-      <form class="d-inline" method="post" action="/books/{{ post.id }}/delete">
+      <form class="d-inline" method="post" action="/books/{{ post.id }}?_method=DELETE">
         <input type="submit" class="btn btn-danger btn-sm" value="削除">
       </form>
     </div>

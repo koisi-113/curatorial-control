@@ -5,7 +5,7 @@
 {% block content %}
 <div class="bookupdate-form">
   <div class="pb-2 border-bottom mb-3">
-  <form method="post" action="/books/{{ book.id }}/put">
+  <form method="post" action="/books/{{ book.id }}?_method=PUT">
    <textarea name="name" class="form-control" id="name" rows="1" placeholder="更新したい本の名前" required></textarea>
     <select name="categoryId" class="form-control" id="categoryId" required>
     <option value="" disabled selected>更新したいカテゴリを選択</option>

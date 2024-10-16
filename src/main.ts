@@ -1,4 +1,5 @@
 import { NestFactory } from "@nestjs/core";
+import * as methodOverride from "method-override";
 import { AppModule } from "./app.module";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import * as nunjucks from "nunjucks";
@@ -10,6 +11,7 @@ async function bootstrap() {
     autoescape: true,
     express: app,
   });
+  app.use(methodOverride("_method"));
   app.useStaticAssets(join(__dirname,"..","dist"));
   await app.listen(3000);
 }

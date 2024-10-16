@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common";
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Book } from "./models/book.model";
-import { User } from "./models/user.model";
-import { Category } from "./models/category.model";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { BookModule } from "./book/book.module";
+import { CategoryModule } from "./category/category.module";
+import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [ SequelizeModule.forRoot({
@@ -13,8 +13,7 @@ import { AppService } from "./app.service";
     autoLoadModels: true,
     synchronize: true,
   }),
-  SequelizeModule.forFeature([Book, User, Category]),
-],
+  BookModule, CategoryModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
