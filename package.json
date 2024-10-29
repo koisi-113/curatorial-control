@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "run-s copy-public copy-views nest-start",
+    "start": "run-s copy-public copy-views copy-js nest-start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "copy-public": "cp src/public dist -r",
     "copy-views": "cp front/views/*njk dist",
+    "copy-js": "cp js/*js dist",
     "nest-start": "ts-node src/main.ts"
   },
   "dependencies": {
