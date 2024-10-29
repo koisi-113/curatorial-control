@@ -5,7 +5,7 @@ export class AppController {
 
   @Get("/")
   redirectToBooks(@Res() res:any) {
-    return res.redirect("/books");
+    return res.redirect("/top");
   }
 
   @Get("/top")
