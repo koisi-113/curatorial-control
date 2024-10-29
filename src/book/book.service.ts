@@ -3,6 +3,7 @@ import { InjectModel } from "@nestjs/sequelize";
 import { Book } from "../models/book.model";
 import { User } from "../models/user.model";
 import { Category } from "../models/category.model";
+import { Op } from "sequelize";
 
 @Injectable()
 export class BookService {
@@ -17,6 +18,16 @@ export class BookService {
 
   async readBookById(id: number): Promise<Book | null> {
     return await this.bookModel.findByPk(id);
+  }
+
+  async readBookByName(name: string): Promise<Book[]> {
+    return await this.bookModel.findAll({
+      where: {
+        name: {
+          [Op.substring]: name,
+        }
+      }
+    });
   }
 
   async createBook(name: string,categoryId: number,author: string,isbn: string,publisher: string,is_borrowing: boolean,userId: number): Promise<void> {
