@@ -13,13 +13,14 @@ export class UserService {
     return await this.userModel.findAll();
   }
 
-  async createUser(name: string,grade: string): Promise<void> {
-    await this.userModel.create({ name,grade });
-  }
+
+async createUser(name: string,grade: string): Promise<void> {
+  await this.userModel.create({ name,grade });
+}
 
   async updateUser(id: number, grade: string, name: string): Promise<void> {
     await this.userModel.update(
-      {grade, name},
+      { grade, name },
       { where: { id }}
     );
   }
