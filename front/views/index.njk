@@ -1,15 +1,14 @@
 {% extends "base.njk" %}
 {% block title %}ホーム画面{% endblock %}
-{% block script %}
-{% endblock %}
+{% block scripts %}<script src="/javascript.js"></script>{% endblock %}
 {% block content %}
 <h1>蔵書管理システム
 <div style="display: flex; justify-content: flex-end; gap: 10px;">
     
-    <a href="/books/users">
+    <a href="/books/users" data-bs-toggle="tooltip" title="ユーザー管理">
       <img src="public/images/User-Button1.png" onMouseOver="this.src='public/images/User-Button2.png'" onMouseOut="this.src='public/images/User-Button1.png'" class="rounded float-end" width="55" height="50"/>
     </a>
-    <a href="/books/categories">
+    <a href="/books/categories" data-bs-toggle="tooltip" title="カテゴリ管理">
       <img src="public/images/Category-Button1.png" onMouseOver="this.src='public/images/Category-Button2.png'" onMouseOut="this.src='public/images/Category-Button1.png'" class="rounded float-end" width="55" height="50"/>
     </a>
 </div>
