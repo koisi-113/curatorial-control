@@ -9,7 +9,7 @@ export class UserService {
   private userModel: typeof User,
  ){}
 
-async readUsers() {
+ async readUsers() {
   return await this.userModel.findAll();
 }
 
