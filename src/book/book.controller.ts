@@ -119,6 +119,6 @@ export class BookController {
       is_borrowing,
       userId,
     );
-    return res.redirect('/books');
+    return res.redirect('top/books');
   }
 }
