@@ -1,0 +1,123 @@
+{%extends "base.njk"%} {%block title%}本の更新ページ{%endblock%} {%block
+content%}
+<h1 class="ml-5 fw-bold mb-10" style="color: orange">
+  「{{book.name}}」の詳細情報
+</h1>
+
+<form method="handleSubmit(event)" class="form-floating ml-4 mb-3">
+  <input type="hidden" id="id" value="{{book.id}}" />
+  <div name="book-name">
+    <label for="name" class="fs-3 mb-2 fw-semibold">著書名</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      value="{{book.name}}"
+      required
+      style="height: 30px; resize: none; padding: 10px; font-size: 14px"
+    />
+  </div>
+  <div name="book-category">
+    <label for="category" class="fs-3 mb-2 fw-semibold">カテゴリ</label>
+    <select class="form-select" id="category" placeholder="項目を選択">
+      <option selected>{{book.category.name}}</option>
+      {% for category in categories%}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div name="book-author">
+    <label for="author" class="fs-3 mb-2 fw-semibold">著者名</label>
+    <input
+      type="text"
+      class="form-control"
+      id="author"
+      placeholder="著者名"
+      value="{{book.author}}"
+    />
+  </div>
+  <div name="book-isbn">
+    <label for="isbn" class="fs-3 mb-2 fw-semibold">ISBN番号(13桁)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="isbn"
+      placeholder="ISBN番号"
+      value="{{book.isbn}}"
+      maxlength="13"
+      pattern="\d{13}"
+    />
+  </div>
+  <div name="book-publisher">
+    <label for="publisher" class="fs-3 mb-2 fw-semibold">出版社</label>
+    <input
+      type="text"
+      class="form-control"
+      id="publisher"
+      placeholder="出版社"
+      value="{{book.publisher}}"
+    />
+  </div>
+  <input type="hidden" id="is_borrowing" value="book.is_borrowing" />
+  <div style="display: flex; justify-content: space-between; margin-top: 20px">
+    <button
+      type="button"
+      class="btn btn-outline-danger btn-lg"
+      onclick="handleSubmit(event)"
+    >
+      更新する
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-danger btn-lg"
+      onclick="cancelUpdate()"
+    >
+      キャンセル
+    </button>
+  </div>
+</form>
+{%endblock%} {%block scripts%}
+<script>
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const id = document.getElementById('id').value;
+    const name = document.getElementById('name').value;
+    const categoryId = document.getElementById('{{book.categoryId}}').value;
+    const author = document.getElementById('author').value;
+    const isbn = document.getElementById('isbn').value;
+    const publisher = document.getElementById('publisher').value;
+    const is_borrowing = document.getElementById('is_borrowing').checked;
+    const userId = document.getElementById('{{book.userId}}').value;
+    try {
+      const response = await fetch(`/books/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          categoryId: parseInt(categoryId),
+          author,
+          isbn,
+          publisher,
+          is_borrowing,
+        }),
+      });
+      if (response.ok) {
+        const result = await response.json();
+        alert('本が更新されました。');
+      } else {
+        alert('データの更新に失敗しました。');
+      }
+    } catch (error) {
+      console.error('エラー:', error);
+    }
+  }
+  function cancelUpdate() {
+    if (confirm('変更をキャンセルしますか？')) {
+      window.location.href = `/books/${id}`;
+    }
+  }
+</script>
+{%endblock%}
