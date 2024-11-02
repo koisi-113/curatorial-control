@@ -90,7 +90,7 @@ content%}
     const is_borrowing = document.getElementById('is_borrowing').checked;
     const userId = document.getElementById('{{book.userId}}').value;
     try {
-      const response = await fetch(`/books/${id}`, {
+      const response = await fetch(`top/books/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ content%}
   }
   function cancelUpdate() {
     if (confirm('変更をキャンセルしますか？')) {
-      window.location.href = `/books/${id}`;
+      window.location.href = `top/books/${id}`;
     }
   }
 </script>

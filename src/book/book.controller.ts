@@ -60,7 +60,7 @@ export class BookController {
   //検索結果ページを表示
   @Get('search')
   @Render("search_result.njk")
-  async getSearchBook(@Query('name') name: string){
+  async getSearchBook(@Query('query') name: string){
     //ヒットした本を取得
     const books=await this.bookService.readBookByName(name);
     return {books,name};
