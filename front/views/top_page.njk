@@ -2,16 +2,16 @@
 
 <div
   class="d-flex flex-column justify-content-center align-items-center"
-  style="height: 11vh; background-color: #f8f9fa"
+  style="height: 11vh; margin-top: 200px;"
 >
-  <h1 class="text-center fw-bold mb-4" style="color: orange">
+  <h1 class="text-center fw-bold mt-10 mb-4" style="color: orange; width: 100%;">
     早川研 蔵書管理システム
   </h1>
   <form
     method="get"
-    action="/books/search"
+    action="top/books/search"
     class="d-flex"
-    style="width: 75%; margin-left: auto; margin-right: auto; margin: 0"
+    style=" width:80%; margin-bottom: 20px; justify-content: center;"
   >
     <textarea
       type="search"
@@ -20,19 +20,18 @@
       rows="1"
       placeholder="本の名前を入力"
       required
-      style="height: 60px; resize: none; padding: 10px; font-size: 18px"
+      style="width:500px; height: 60px; resize: none; padding: 10px; font-size: 18px"
     ></textarea>
     <button
       type="submit"
-      class="btn btn-outline-secondary"
+      class="btn btn-outline-danger btn-lg"
       data-bs-toggle="tooltip"
       title="検索"
-      style="border: none; background: none; padding: 0"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
+        width="32"
+        height="32"
         fill="currentColor"
         class="bi bi-search"
         viewBox="0 0 16 16"
@@ -45,14 +44,14 @@
   </form>
 </div>
 
-<div style="display: flex; justify-content: center; gap: 30px" class="mt-8">
+<div style="display: flex; justify-content: center; gap: 300px; margin-top:50px;" class="mt-8">
   <button
     type="button"
     class="btn btn-lg btn-outline-success"
-    onclick="window.location.href='/books'"
+    onclick="window.location.href='top/books'"
     data-bs-toggle="tooltip"
     title="本一覧"
-    style="border: none; background: none; padding: 0"
+    style="border: none; padding: 20"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -70,10 +69,10 @@
   <button
     type="button"
     class="btn btn-lg btn-outline-primary"
-    onclick="window.location.href='/users'"
+    onclick="window.location.href='top/users'"
     data-bs-toggle="tooltip"
     title="アカウント一覧"
-    style="border: none; background: none; padding: 0"
+    style="border: none; padding: 20"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
