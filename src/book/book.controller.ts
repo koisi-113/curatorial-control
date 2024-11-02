@@ -63,7 +63,7 @@ export class BookController {
   async getSearchBook(@Query('name') name: string){
     //ヒットした本を取得
     const books=await this.bookService.readBookByName(name);
-    return {books};
+    return {books,name};
   }
 
   //本の追加ページを表示
