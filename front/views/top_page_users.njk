@@ -1,0 +1,31 @@
+{%extends "base.njk" %} {%block title%}ユーザー一覧{%endblock %} {%block content%}
+<h1>ユーザー一覧</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for user in users%}
+    <tr
+      onclick="window.location.href=`top/users/add`"
+      data-bs-toggle="tooltip"
+      title="ユーザー追加のページへ"
+      style="cursor: pointer"
+    >
+    <tr
+      onclick="window.location.href=`top/users/${users.id}`"
+      data-bs-toggle="tooltip"
+      title="{{users.id}}の詳細ページへ"
+      style="cursor: pointer"
+    >
+      <th scope="row">{{loop.index}}</th>
+      <td>{{users.name}}</td>
+      <td>{{users.author}}</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{%endblock%}
