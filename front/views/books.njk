@@ -21,9 +21,9 @@
     </thead>
     {%for post in posts%}
     <tr
-        onclick="window.location.href=`top/books/${book.id}`"
+        onclick="window.location.href=`top/books/${post.id}`"
         data-bs-toggle="tooltip"
-        title="{{book.name}}の詳細ページへ"
+        title="{{post.name}}の詳細ページへ"
         style="cursor: pointer"
     >
     <th scope="row">{{loop.index}}</th>
