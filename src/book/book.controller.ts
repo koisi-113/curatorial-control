@@ -59,26 +59,27 @@ export class BookController {
 
   //検索結果ページを表示
   @Get('search')
-  @Render("search_result.njk")
-  async getSearchBook(@Query('query') name: string){
+  @Render('search_result.njk')
+  async getSearchBook(@Query('query') name: string) {
     //ヒットした本を取得
-    const books=await this.bookService.readBookByName(name);
-    return {books,name};
+    const books = await this.bookService.readBookByName(name);
+    return { books, name };
   }
 
   //本の追加ページを表示
   @Get('add')
-  @Render("add_book.njk")
-  showAddPage(){
+  @Render('add_book.njk')
+  showAddPage() {
     return;
   }
 
   //本の詳細情報ページ
   @Get(':id')
-  @Render("detail_book.njk")
+  @Render('detail_book.njk')
   async showDetail(@Param('id') id: string, @Res() res: any) {
     const book = await this.bookService.readBookById(parseInt(id));
-    return;
+    //bookオブジェクトが返ってなかったため修正したわよ
+    return { book };
   }
 
   //本の削除
