@@ -1,0 +1,49 @@
+{% extends "base.njk" %}
+
+{% block title %}ユーザー情報更新ページ{% endblock %}
+
+{% block content %}
+<h1 class="ml-5 fw-bold mb-10" style="color: orange">
+  ユーザー情報の更新
+</h1>
+
+<form action="/top/users/{{ user.id }}" method="POST" class="form-floating ml-4 mb-3">
+  <input type="hidden" name="user_id" value="{{ user.id }}" />
+
+  <div name="user-name">
+    <label for="name" class="fs-3 mb-2 fw-semibold">名前</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      value="{{ user.name }}"
+      required
+      style="height: 30px; resize: none; padding: 10px; font-size: 14px"
+    />
+  </div>
+
+  <div name="user-grade">
+    <label for="grade" class="fs-3 mb-2 fw-semibold">学年</label>
+    <select class="form-select" id="grade" name="grade" required>
+      <option value="B3" {% if user.grade == B3 %}selected{% endif %}>B3</option>
+      <option value="B4" {% if user.grade == B4 %}selected{% endif %}>B4</option>
+      <option value="M1" {% if user.grade == M1 %}selected{% endif %}>M1</option>
+      <option value="M2" {% if user.grade == M2 %}selected{% endif %}>M2</option>
+    </select>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-top: 20px">
+    <button
+      type="submit"
+      class="btn btn-outline-danger btn-lg"
+    >
+      更新する
+    </button>
+
+    <a href="/top/users" class="btn btn-outline-danger btn-lg">
+      キャンセル
+    </a>
+  </div>
+</form>
+{% endblock %}
