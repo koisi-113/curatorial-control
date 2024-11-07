@@ -77,6 +77,7 @@ content%}
     </button>
   </div>
 </form>
+{#
 {%endblock%} {%block scripts%}
 <script>
   async function handleSubmit(event) {
@@ -120,4 +121,6 @@ content%}
     }
   }
 </script>
+#}
 {%endblock%}
+{% block scripts %}<script src="/javascript.js"></script>{% endblock %}
