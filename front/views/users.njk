@@ -1,14 +1,18 @@
-{%extends "base.njk" %} {%block title%}ユーザー一覧{%endblock %} {%block content%}
-<h1>ユーザー一覧</h1>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+  <meta charset="UTF-8">
+  <title>ユーザー一覧</title>
+</head>
+  <body>
+    <h1 class="title">ユーザー一覧</h1>
 
-<table class="table table-hover">
-  <thead>
+  <table class="table table-hover">
     <tr>
       <th>ユーザー名</th>
     </tr>
-  </thead>
-  <tbody>
-    {%for user in users%}
+    {% for user in users%}
     <tr
       onclick="window.location.href=`top/users/add`"
       data-bs-toggle="tooltip"
@@ -26,6 +30,5 @@
       <td>{{users.author}}</td>
     </tr>
     {%endfor%}
-  </tbody>
-</table>
-{%endblock%}
+</body>
+</html>
