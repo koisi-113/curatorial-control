@@ -1,0 +1,42 @@
+{% extends "base.njk" %}
+
+{% block title %}本の詳細情報{% endblock %}
+
+{% block content %}
+<h1 class="ml-5 fw-bold mb-10" style="color: orange">
+  「{{ book.name }}」の詳細情報
+</h1>
+
+
+
+<form action="/top/books/{{ book.id }}" method="POST" style="display: inline;">
+    <input type="hidden" name="_method" value="DELETE" />
+    <button type="submit" class="btn btn-outline-danger btn-lg">
+      削除
+    </button>
+  </form>
+
+
+<div class="ml-4">
+  <p class="fs-4"><b>カテゴリ:</b> {{ book.category.name }}</p>
+
+  <p class="fs-4"><b>著者:</b> {{ book.author }}</p>
+
+  <p class="fs-4"><b>ISBN番号:</b> {{ book.isbn }}</p>
+
+  <p class="fs-4"><b>出版社:</b> {{ book.publisher }}</p>
+
+  <p class="fs-4"><b>貸出状況:</b> {{ book.is_borrowing }}</p>
+</div>
+
+<div style="display: flex; gap: 10px; margin-top: 20px;">
+  <a href="/top/books/{{ book.id }}/edit" class="btn btn-outline-warning btn-lg">
+    編集
+  </a>
+
+  <a href="/top/books" class="btn btn-outline-danger btn-lg">
+    戻る
+  </a>
+</div>
+{% endblock %}
+
