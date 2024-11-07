@@ -30,7 +30,7 @@ export class UserController {
   }
 
   @Get(":id")
-  @Render("update_book.njk")
+  @Render("update_user.njk")
   async showUpdateUserForm(){
     return;
   }
