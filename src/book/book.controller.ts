@@ -54,7 +54,7 @@ export class BookController {
       is_borrowing,
       userId,
     );
-    return res.redirect('/books');
+    return res.redirect('/top/books');
   }
 
   //検索結果ページを表示
@@ -86,7 +86,7 @@ export class BookController {
   @Delete(':id')
   async deleteBookById(@Param('id') id: string, @Res() res: any) {
     await this.bookService.deleteBookById(parseInt(id));
-    return res.redirect('/books');
+    return res.redirect('/top/books');
   }
 
   //本の更新ページ
@@ -122,6 +122,6 @@ export class BookController {
       is_borrowing,
       userId,
     );
-    return res.redirect('top/books');
+    return res.redirect('/top/books');
   }
 }

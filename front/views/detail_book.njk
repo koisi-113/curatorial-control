@@ -7,17 +7,9 @@
   「{{ book.name }}」の詳細情報
 </h1>
 
-
-
-<form action="/top/books/{{ book.id }}" method="POST" style="display: inline;">
-    <input type="hidden" name="_method" value="DELETE" />
-    <button type="submit" class="btn btn-outline-danger btn-lg">
-      削除
-    </button>
-  </form>
-
-
 <div class="ml-4">
+  <p class="fs-4"><b>タイトル:</b> {{ book.name }}</p>
+
   <p class="fs-4"><b>カテゴリ:</b> {{ book.category.name }}</p>
 
   <p class="fs-4"><b>著者:</b> {{ book.author }}</p>
@@ -35,8 +27,15 @@
   </a>
 
   <a href="/top/books" class="btn btn-outline-danger btn-lg">
-    戻る
+    一覧
   </a>
+
+  <form class＝"text-right" action="/top/books/{{ book.id }}" method="POST" style="display: inline; margin-left: auto">
+    <input type="hidden" name="_method" value="DELETE" />
+    <button type="submit" class="btn btn-outline-danger btn-lg">
+      削除
+    </button>
+  </form>
 </div>
 {% endblock %}
 
