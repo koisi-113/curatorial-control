@@ -1,7 +1,15 @@
-import { Table, Column, Model, DataType, PrimaryKey, AutoIncrement, HasMany} from "sequelize-typescript";
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  PrimaryKey,
+  AutoIncrement,
+  HasMany,
+} from 'sequelize-typescript';
 import { Book } from './book.model';
 
-@Table({ tableName: "categories" })
+@Table({ tableName: 'categories' })
 export class Category extends Model {
   @PrimaryKey
   @AutoIncrement
