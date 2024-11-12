@@ -2,7 +2,7 @@
 <h1 claass="ml-5 fw-bold mb-10" style="color: orange">本を追加</h1>
 
 <div class="pb-2 border-bottom mb-3">
-  <form method="post" action="/books/users">
+  <form method="post" action="/top/books">
     <label for="name" name="form-label">著書名</label>
     <input id="name" name="name" type="text" class="form-control" required>
     <label for="author name">著者名</label>
@@ -17,7 +17,7 @@
     <a href="/users">
       <img src="/public/images/Back-Button1.png" onMouseOver="this.src='/public/images/Back-Button2.png'" onMouseOut="this.src='/public/images/Back-Button1.png'" class="rounded float-end" width="55" height="50"/>
     </a>
-    <a class="btn btn-primary" href="/users">アカウントを追加する</a>
+    <a class="btn btn-primary" href="/top/users/add">アカウントを追加する</a>
   </div>
 </div>
 {% endblock %}
