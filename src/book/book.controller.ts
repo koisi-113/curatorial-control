@@ -69,8 +69,9 @@ export class BookController {
   //本の追加ページを表示
   @Get('add')
   @Render('add_book.njk')
-  showAddPage() {
-    return;
+  async showAddPage() {
+    const add_book = await this.bookService.addBooks();
+    return { posts: add_book };
   }
 
   //本の詳細情報ページ

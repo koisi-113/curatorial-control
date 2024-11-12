@@ -1,8 +1,17 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo, PrimaryKey, AutoIncrement } from "sequelize-typescript";
-import { User } from "./user.model";
-import { Category } from "./category.model";
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+  PrimaryKey,
+  AutoIncrement,
+} from 'sequelize-typescript';
+import { User } from './user.model';
+import { Category } from './category.model';
 
-@Table({ tableName: "book"})
+@Table({ tableName: 'book' })
 export class Book extends Model {
   @PrimaryKey
   @AutoIncrement
@@ -29,12 +38,12 @@ export class Book extends Model {
   publisher?: string;
 
   @Column({
-    type: DataType.BOOLEAN, 
-    allowNull: false,      
-    defaultValue: false     
+    type: DataType.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
   })
-  is_borrowing: boolean;   
-  
+  is_borrowing: boolean;
+
   @ForeignKey(() => User)
   @Column(DataType.INTEGER)
   userId?: number;
@@ -42,4 +51,3 @@ export class Book extends Model {
   @BelongsTo(() => User)
   user?: User;
 }
-  
