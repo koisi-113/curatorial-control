@@ -39,7 +39,7 @@ export class UserController {
     @Res() res: any,
   ) {
     await this.userService.createUser(name, grade);
-    return res.redirect('top/users');
+    return res.redirect('/top/users');
   }
 
   @Get(':id')
@@ -56,12 +56,12 @@ export class UserController {
     @Res() res: any,
   ) {
     await this.userService.updateUser(parseInt(id), grade, name);
-    return res.redirect('top/users');
+    return res.redirect('/top/users');
   }
 
   @Delete(':id')
   async deleteUser(@Param('id') id: string, @Res() res: any) {
     await this.userService.deleteUser(parseInt(id));
-    return res.redirect('top/users');
+    return res.redirect('/top/users');
   }
 }
