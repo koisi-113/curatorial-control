@@ -9,20 +9,20 @@
 
 <div class="pb-2 border-bottom mb-3">
   <form method="post" action="/top/books">
-    <label for="name" class="form-label">著書名</label>
-    <input id="name" name="name" type="text" class="form-control" required>
+    <label for="name" class="fs-3 mb-2 fw-semibold">著書名</label>
+    <input id="name" name="book-name" type="text" class="form-control" required>
     
-    <label for="CategoryId" class="form-label">カテゴリーID</label>
-    <input id="CategoryId" name="CategoryId" type="text" class="form-control" required>
+    <label for="category" class="fs-3 mb-2 fw-semibold">カテゴリID</label>
+    <input id="category" name="book-category" type="text" class="form-control" required>
     
-    <label for="author" class="form-label">著者名</label>
-    <input id="author" name="author" type="text" class="form-control" required>
+    <label for="author" class="fs-3 mb-2 fw-semibold">著者名</label>
+    <input id="author" name="book-author" type="text" class="form-control" required>
     
     <label for="isbn" class="form-label">ISBN</label>
-    <input id="isbn" name="isbn" type="text" class="form-control" required>
+    <input id="isbn" name="book-isbn" type="number" class="form-control" required>
     
-    <label for="publisher" class="form-label">出版社名</label>
-    <input id="publisher" name="publisher" type="text" class="form-control" required>
+    <label for="publisher" class="fs-3 mb-2 fw-semibold">出版社名</label>
+    <input id="publisher" name="book-publisher" type="text" class="form-control" required>
     
     <label for="is_borrowing" class="form-label">貸出中</label>
     <input id="is_borrowing" name="is_borrowing" type="boolean" class="form-control" required>
