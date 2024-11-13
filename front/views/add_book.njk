@@ -1,31 +1,48 @@
-{% extends "base.njk" %} {% block title %}本の追加画面{% endblock %} {% block content %}
-<h1 claass="ml-5 fw-bold mb-10" style="color: orange">本を追加</h1>
+{% extends "base.njk" %}
+
+{% block title %}
+本の追加画面
+{% endblock %}
+
+{% block content %}
+<h1 class="ml-5 fw-bold mb-10" style="color: orange;">本を追加</h1>
 
 <div class="pb-2 border-bottom mb-3">
   <form method="post" action="/top/books">
-    <label for="name" name="form-label">著書名</label>
+    <label for="name" class="form-label">著書名</label>
     <input id="name" name="name" type="text" class="form-control" required>
-    <label for="CategoryId" name="form-label">カテゴリーID</label>
+    
+    <label for="CategoryId" class="form-label">カテゴリーID</label>
     <input id="CategoryId" name="CategoryId" type="text" class="form-control" required>
-    <label for="author">著者名</label>
+    
+    <label for="author" class="form-label">著者名</label>
     <input id="author" name="author" type="text" class="form-control" required>
-    <label for="isbn" name="form-label">isbn</label>
+    
+    <label for="isbn" class="form-label">ISBN</label>
     <input id="isbn" name="isbn" type="text" class="form-control" required>
-    <div class="mt-2 text-end">
-    <label for="publisher" name="form-label">出版社名</label>
+    
+    <label for="publisher" class="form-label">出版社名</label>
     <input id="publisher" name="publisher" type="text" class="form-control" required>
-    <label for="is_borrowing" name="form-label">貸出中</label>
+    
+    <label for="is_borrowing" class="form-label">貸出中</label>
     <input id="is_borrowing" name="is_borrowing" type="boolean" class="form-control" required>
-    <label for="userId" name="form-label">アカウントID</label>
+    
+    <label for="userId" class="form-label">アカウントID</label>
     <input id="userId" name="userId" type="text" class="form-control" required>
+    
+    <div class="mt-2 text-end">
       <input type="submit" class="btn btn-primary" value="本を追加">
     </div>
   </form>
 </div>
+
 <div class="text-end">
   <div style="display: flex; justify-content: flex-end; gap: 10px;">
     <a href="/top/books">
-      <img src="/public/images/Back-Button1.png" onMouseOver="this.src='/public/images/Back-Button2.png'" onMouseOut="this.src='/public/images/Back-Button1.png'" class="rounded float-end" width="55" height="50"/>
+      <img src="/public/images/Back-Button1.png"
+           onMouseOver="this.src='/public/images/Back-Button2.png'"
+           onMouseOut="this.src='/public/images/Back-Button1.png'"
+           class="rounded float-end" width="55" height="50"/>
     </a>
     <a class="btn btn-primary" href="/top/users/add">アカウントを追加する</a>
   </div>
