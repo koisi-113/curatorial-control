@@ -36,16 +36,11 @@ content %}
   </li>
 </ol>
 <div class="pb-2 border-bottom mb-3">
-  <form method="post" action="/top/books">
+  <form method="post" action="/top/books/add">
     <label for="name" class="fs-3 mb-2 fw-semibold">著書名</label>
-    <input
-      id="name"
-      name="book-name"
-      type="text"
-      class="form-control"
-      required
-    />
 
+    <input id="name" name="name" type0="text" class="form-control" required>
+    
     <label for="category" class="fs-3 mb-2 fw-semibold">カテゴリID</label>
     <input
       id="category"
@@ -56,31 +51,14 @@ content %}
     />
 
     <label for="author" class="fs-3 mb-2 fw-semibold">著者名</label>
-    <input
-      id="author"
-      name="book-author"
-      type="text"
-      class="form-control"
-      required
-    />
 
+    <input id="author" name="author" type="text" class="form-control" required>
+    
     <label for="isbn" class="form-label">ISBN</label>
-    <input
-      id="isbn"
-      name="book-isbn"
-      type="number"
-      class="form-control"
-      required
-    />
-
+    <input id="isbn" name="isbn" type="number" class="form-control" required>
+    
     <label for="publisher" class="fs-3 mb-2 fw-semibold">出版社名</label>
-    <input
-      id="publisher"
-      name="book-publisher"
-      type="text"
-      class="form-control"
-      required
-    />
+    <input id="publisher" name="publisher" type="text" class="form-control" required>
     <div class="mt-2 text-end">
       <input type="submit" class="btn btn-primary" value="本を追加" />
     </div>
