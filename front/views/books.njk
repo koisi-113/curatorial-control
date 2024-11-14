@@ -1,15 +1,36 @@
-{% extends "base.njk" %}
-{% block title %}本の一覧{% endblock %}
-{% block script %}
-{% endblock %}
-{% block content %}
+{% extends "base.njk" %} {% block title %}本の一覧{% endblock %} {% block script
+%} {% endblock %} {% block content %}
 <h1 class="ml-5 fw-bold mb-10" style="color: orange">一覧表示</h1>
+<ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <li
+    itemprop="itemListElement"
+    itemscope
+    itemtype="https://schema.org/ListItem"
+  >
+    <a itemprop="item" href="/top">
+      <span itemprop="name">トップ</span>
+    </a>
+    <meta itemprop="position" content="1" />
+  </li>
+
+  <li
+    itemprop="itemListElement"
+    itemscope
+    itemtype="https://schema.org/ListItem"
+  >
+    <a itemprop="item" href="/top/books">
+      <span itemprop="name">本の一覧</span>
+    </a>
+    <meta itemprop="position" content="2" />
+  </li>
+</ol>
 <div class="d-flex justify-content-end mb-3">
-    <a href="/top" class="me-2 btn btn-success">トップページへ</a>
-    <a href="/top/books/add" class="btn btn-success">本の追加</a>
+  <a href="/top" class="me-2 btn btn-success">トップページへ</a>
+  <a href="/top/books/add" class="btn btn-success">本の追加</a>
 </div>
 
 <table class="table table-hover">
+
     {% if posts and posts.length > 0 %}
     <thead>
         <tr>
