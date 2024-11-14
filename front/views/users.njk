@@ -1,39 +1,58 @@
-{% extends "base.njk" %}
-{% block title %}ユーザー一覧{% endblock %}
-{% block script %}
-{% endblock %}
-{% block content %}
+{% extends "base.njk" %} {% block title %}ユーザー一覧{% endblock %} {% block
+script %} {% endblock %} {% block content %}
 <h1 class="ml-5 fw-bold mb-10" style="color: orange">一覧表示</h1>
+<ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <li
+    itemprop="itemListElement"
+    itemscope
+    itemtype="https://schema.org/ListItem"
+  >
+    <a itemprop="item" href="/top">
+      <span itemprop="name">トップ</span>
+    </a>
+    <meta itemprop="position" content="1" />
+  </li>
+
+  <li
+    itemprop="itemListElement"
+    itemscope
+    itemtype="https://schema.org/ListItem"
+  >
+    <a itemprop="item" href="/top/users">
+      <span itemprop="name">ユーザー一覧</span>
+    </a>
+    <meta itemprop="position" content="2" />
+  </li>
+</ol>
 <div class="d-flex justify-content-end mb-3">
-    <a href="/top" class="me-2 btn btn-success">トップページへ</a>
-    <a href="/top/users/add" class="btn btn-success">ユーザーの追加</a>
+  <a href="/top" class="me-2 btn btn-success">トップページへ</a>
+  <a href="/top/users/add" class="btn btn-success">ユーザーの追加</a>
 </div>
 
 <table class="table table-hover">
-    <tbody>
+  <tbody>
     {% if posts.length > 0 %}
     <thead>
-        <tr>
-          <th scope="col" class="col-1"></th>
-          <th scope="col" class="col-5">ユーザー名</th>
-          <th scope="col" class="col-3">学年</th>
-        </tr>
+      <tr>
+        <th scope="col" class="col-1"></th>
+        <th scope="col" class="col-5">ユーザー名</th>
+        <th scope="col" class="col-3">学年</th>
+      </tr>
     </thead>
     {%for post in posts%}
     <tr
-        onclick="window.location.href=`top/users/${post.id}`"
-        data-bs-toggle="tooltip"
-        title="{{post.name}}の詳細ページへ"
-        style="cursor: pointer"
+      onclick="window.location.href=`top/users/${post.id}`"
+      data-bs-toggle="tooltip"
+      title="{{post.name}}の詳細ページへ"
+      style="cursor: pointer"
     >
-    <th scope="row">{{loop.index}}</th>
-        <td>{{post.name}}</td>
-	<td>{{post.grade}}</td>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{post.name}}</td>
+      <td>{{post.grade}}</td>
     </tr>
-    {%endfor%}
-    {% else %}
-        <p class="text-center text-muted">ユーザーがいません。</p>
+    {%endfor%} {% else %}
+    <p class="text-center text-muted">ユーザーがいません。</p>
     {% endif %}
-    </tbody>
+  </tbody>
 </table>
 {% endblock %}
