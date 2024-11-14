@@ -44,7 +44,9 @@ export class UserController {
 
   @Get(':id')
   @Render('update_user.njk')
-  async showUpdateUserForm() {
+  async showUpdateUserForm(id: string) {
+    //const user = await this.userService.findUser(id);
+    //return { user: user };
     return;
   }
 

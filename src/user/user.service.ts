@@ -13,6 +13,10 @@ export class UserService {
     return await this.userModel.findAll();
   }
 
+  async findUser(id: string) {
+    return await this.userModel.findByPk(id);
+  }
+
   async addUsers() {
     return await this.userModel.findAll();
   }
