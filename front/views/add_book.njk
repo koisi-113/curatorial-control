@@ -42,13 +42,12 @@ content %}
     <input id="name" name="name" type0="text" class="form-control" required>
     
     <label for="category" class="fs-3 mb-2 fw-semibold">カテゴリID</label>
-    <input
-      id="category"
-      name="book-category"
-      type="text"
-      class="form-control"
-      required
-    />
+    <select class="form-select" id="category" placeholder="項目を選択">
+      <option selected>{{book.category.name}}</option>
+      {% for category in categories%}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+      {% endfor %}
+    </select>
 
     <label for="author" class="fs-3 mb-2 fw-semibold">著者名</label>
 
