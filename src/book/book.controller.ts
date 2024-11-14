@@ -34,7 +34,7 @@ export class BookController {
   }
 
   //本の追加
-  @Post()
+  @Post('/add')
   async createBook(
     @Body('name') name: string,
     @Body('categoryId') categoryId: number,

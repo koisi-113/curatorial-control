@@ -40,7 +40,12 @@ block content %}
     <label for="name" name="form-label">アカウント名</label>
     <input id="name" name="name" type="text" class="form-control" required />
     <label for="grade">学年</label>
-    <input id="grade" name="grade" type="text" class="form-control" required />
+    <select class="form-select" id="grade" name="grade" required>
+      <option value="B3" selected>B3</option>
+      <option value="B4">B4</option>
+      <option value="M1">M1</option>
+      <option value="M2">M2</option>
+    </select>
     <div class="mt-2 text-end">
       <input type="submit" class="btn btn-primary" value="アカウントを追加" />
     </div>

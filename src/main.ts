@@ -12,7 +12,7 @@ async function bootstrap() {
     express: app,
   });
   app.use(methodOverride('_method'));
-  app.useStaticAssets(join(__dirname, '..','dist', 'public'));
+  app.useStaticAssets(join(__dirname, '..', 'dist', 'public'));
   app.useStaticAssets(join(__dirname, '..', 'dist'));
   await app.listen(3000);
 }
