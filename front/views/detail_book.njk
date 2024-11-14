@@ -30,8 +30,8 @@
     一覧
   </a>
 
-  <form class＝"text-right" action="/top/books/{{ book.id }}" method="POST" style="display: inline; margin-left: auto">
-    <input type="hidden" name="_method" value="DELETE" />
+  <form class＝"text-right" action="/top/books/{{ book.id }}?_method=DELETE" method="POST" style="display: inline; margin-left: auto">
+    {# <input type="hidden" name="_method" value="DELETE" /> #}
     <button type="submit" class="btn btn-outline-danger btn-lg">
       削除
     </button>
