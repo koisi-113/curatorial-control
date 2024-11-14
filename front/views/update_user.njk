@@ -36,7 +36,7 @@
   </li>
 </ol>
 <form
-  action="/top/users/{{ user.id }}"
+  action="/top/users/{{ user.id }}?_method=PUT"
   method="POST"
   class="form-floating ml-4 mb-3"
 >
@@ -58,18 +58,27 @@
   <div name="user-grade">
     <label for="grade" class="fs-3 mb-2 fw-semibold">学年</label>
     <select class="form-select" id="grade" name="grade" required>
-      <option value="B3" {% if user.grade="" ="B3" %}selected{% endif %}>
-        B3
-      </option>
-      <option value="B4" {% if user.grade="" ="B4" %}selected{% endif %}>
-        B4
-      </option>
-      <option value="M1" {% if user.grade="" ="M1" %}selected{% endif %}>
-        M1
-      </option>
-      <option value="M2" {% if user.grade="" ="M2" %}selected{% endif %}>
-        M2
-      </option>
+      {% if user.grade == "B3" %}
+      <option value="B3" selected>B3</option>
+      <option value="B4">B4</option>
+      <option value="M1">M1</option>
+      <option value="M2">M2</option>
+      {% elif user.grade == "B4" %}
+      <option value="B3">B3</option>
+      <option value="B4" selected>B4</option>
+      <option value="M1">M1</option>
+      <option value="M2">M2</option>
+      {% elif user.grade == "M1" %}
+      <option value="B3">B3</option>
+      <option value="B4">B4</option>
+      <option value="M1" selected>M1</option>
+      <option value="M2">M2</option>
+      {% elif user.grade == "M2" %}
+      <option value="B3">B3</option>
+      <option value="B4">B4</option>
+      <option value="M1">M1</option>
+      <option value="M2" selected>M2</option>
+      {% endif %}
     </select>
   </div>
 
