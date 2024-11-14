@@ -37,6 +37,7 @@ script %} {% endblock %} {% block content %}
         <th scope="col" class="col-1"></th>
         <th scope="col" class="col-5">ユーザー名</th>
         <th scope="col" class="col-3">学年</th>
+        <th scope="col" class="col-3">更新</th>
       </tr>
     </thead>
     {%for post in posts%}
@@ -49,6 +50,9 @@ script %} {% endblock %} {% block content %}
       <th scope="row">{{loop.index}}</th>
       <td>{{post.name}}</td>
       <td>{{post.grade}}</td>
+      <td>
+          <a href="/top/users/{{ post.id }}" class="btn btn-primary">更新</a>
+      </td>
     </tr>
     {%endfor%} {% else %}
     <p class="text-center text-muted">ユーザーがいません。</p>
