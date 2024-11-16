@@ -27,9 +27,10 @@
   <thead>
     <tr>
       <th scope="col" class="col-1"></th>
-      <th scope="col" class="col-5">著書名</th>
+      <th scope="col" class="col-4">著書名</th>
       <th scope="col" class="col-3">著者名</th>
-      <th scope="col" class="col-3">貸出</th>
+      <th scope="col" class="col-2">貸出</th>
+      <th scope="col" class="col-2">詳細</th>
     </tr>
   </thead>
   <tbody>
@@ -44,6 +45,9 @@
       <td>{{book.name}}</td>
       <td>{{book.author}}</td>
       <td>{%if book.is_borrowing%} 貸出中 {%else%} 利用可能 {%endif%}</td>
+      <td>
+        <a href="/top/books/{{ book.id }}" class="btn btn-primary">詳細</a>
+      </td>
     </tr>
     {%endfor%}
   </tbody>
