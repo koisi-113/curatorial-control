@@ -16,4 +16,16 @@ export class CategoryService {
   async createCategory(name: string): Promise<void> {
     await this.categoryModel.create({ name });
   }
+  
+  async readCategory(id: string) {
+    return await this.categoryModel.findByPk(id);
+  }
+
+  async updateCategory(id: number, name: string): Promise<void> {
+    await this.categoryModel.update({ name }, { where: { id } });
+  }
+
+  async deleteCategory(id: number): Promise<void> {
+    await this.categoryModel.destroy({ where: { id } });
+  }
 }

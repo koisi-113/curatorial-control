@@ -43,7 +43,7 @@ content %}
     
     <label for="category" class="fs-3 mb-2 fw-semibold">カテゴリID</label>
     <select class="form-select" id="category" placeholder="項目を選択">
-      <option selected>{{book.category.name}}</option>
+      <option selected>{{category.name}}</option>
       {% for category in categories%}
       <option value="{{ category.id }}">{{ category.name }}</option>
       {% endfor %}

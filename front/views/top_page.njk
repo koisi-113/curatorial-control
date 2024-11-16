@@ -48,7 +48,7 @@
   <button
     type="button"
     class="btn btn-lg btn-outline-success"
-    onclick="window.location.href='top/books'"
+    onclick="window.location.href='/top/books'"
     data-bs-toggle="tooltip"
     title="本一覧"
     style="border: none; padding: 20"
@@ -69,7 +69,7 @@
   <button
     type="button"
     class="btn btn-lg btn-outline-primary"
-    onclick="window.location.href='top/users'"
+    onclick="window.location.href='/top/users'"
     data-bs-toggle="tooltip"
     title="アカウント一覧"
     style="border: none; padding: 20"
@@ -87,5 +87,25 @@
       />
     </svg>
   </button>
+  <button
+  type="button"
+  class="btn btn-lg btn-outline-primary"
+  onclick="window.location.href='/top/categories'"
+  data-bs-toggle="tooltip"
+  title="カテゴリー追加"
+  style="border: none; padding: 20px"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    fill="currentColor"
+    class="bi bi-folder-plus"
+    viewBox="0 0 16 16"
+  >
+    <path d="m9.828 4 2 2H14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4l1 1h2.828zM2 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-3.5L8.5 5h-4L4 4H2z"/>
+    <path d="M8 10.5v-2h-1v2H5.5v1H7v2h1v-2h1.5v-1H8z"/>
+  </svg>
+</button>
 </div>
 {%endblock%}
