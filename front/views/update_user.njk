@@ -35,6 +35,15 @@
     <meta itemprop="position" content="3" />
   </li>
 </ol>
+
+<div class="d-flex justify-content-end mb-3">
+  <form class＝"text-right" action="/top/users/{{ user.id }}?_method=DELETE" method="POST" style="display: inline; margin-left: auto">
+    <button type="submit" class="btn btn-outline-danger btn-lg">
+      削除
+    </button>
+  </form>
+</div>
+
 <form
   action="/top/users/{{ user.id }}?_method=PUT"
   method="POST"
@@ -86,7 +95,7 @@
     <button type="submit" class="btn btn-outline-danger btn-lg">
       更新する
     </button>
-
+    
     <a href="/top/users" class="btn btn-outline-danger btn-lg"> キャンセル </a>
   </div>
 </form>
