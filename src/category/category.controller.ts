@@ -5,6 +5,8 @@ import {
   Render,
   Post,
   Body,
+  Put,
+  Delete,
   Res,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
@@ -24,6 +26,29 @@ export class CategoryController {
   @Render('category-form.njk')
   async renderCategoryForm() {
     return {};
+  }
+
+  @Get(':id')
+  @Render('update-category.njk')
+  async showUpdateUserForm(@Param('id') id: string) {
+    const category = await this.categoryService.readCategory(id);
+    return { category };
+  }
+
+  @Put(':id')
+  async updateCategory(
+    @Param('id') id: string,
+    @Body('name') name: string,
+    @Res() res: any,
+  ) {
+    await this.categoryService.updateCategory(parseInt(id), name);
+    return res.redirect('/top/categories');
+  }
+
+  @Delete(':id')
+  async deleteCategory(@Param('id') id: string, @Res() res: any) {
+    await this.categoryService.deleteCategory(parseInt(id));
+    return res.redirect('/top/categories');
   }
 
   @Post()
