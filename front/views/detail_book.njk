@@ -8,11 +8,11 @@
 </h1>
 
 <div class="ml-4">
-  <p class="fs-4"><b>タイトル:</b> {{ book.name }}</p>
+  <p class="fs-4"><b>著書名:</b> {{ book.name }}</p>
 
   <p class="fs-4"><b>カテゴリ:</b> {{ book.category.name }}</p>
 
-  <p class="fs-4"><b>著者:</b> {{ book.author }}</p>
+  <p class="fs-4"><b>著者名:</b> {{ book.author }}</p>
 
   <p class="fs-4"><b>ISBN番号:</b> {{ book.isbn }}</p>
 
@@ -30,7 +30,36 @@
     一覧
   </a>
 
-  <form class＝"text-right" action="/top/books/{{ book.id }}?_method=DELETE" method="POST" style="display: inline; margin-left: auto">
+  <!--
+  <form 
+  action="/top/books/{{ book.id }}?_method=PUT" 
+  method="POST" 
+  style="display: inline;"
+  >
+    <input type="hidden" name="name" value="{{ book.name }}">
+    <input type="hidden" name="categoryId" value="{{ book.category.id }}"> 
+    <input type="hidden" name="author" value="{{ book.author }}">
+    <input type="hidden" name="isbn" value="{{ book.isbn }}">
+    <input type="hidden" name="publisher" value="{{ book.publisher }}">
+    <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
+    <input type="hidden" name="userId" value="{{ book.userId }}">
+  
+    <button type="submit" class="btn btn-outline-primary btn-lg">
+      {% if book.is_borrowing %}
+        貸出を終了
+      {% else %}
+        貸出する
+      {% endif %}
+    </button>
+  </form>
+  -->
+
+  <form 
+    class＝"text-right" 
+    action="/top/books/{{ book.id }}?_method=DELETE" 
+    method="POST" 
+    style="display: inline; margin-left: auto"
+  >
     <button type="submit" class="btn btn-outline-danger btn-lg">
       削除
     </button>
