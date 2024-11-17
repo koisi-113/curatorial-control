@@ -25,7 +25,7 @@ export class BookService {
       include: [
         {
           model: Category,
-          attributes: ["name"],
+          attributes: ["name", "id"],
         },
       ],
     });
@@ -71,14 +71,15 @@ export class BookService {
     id: number,
     name: string,
     categoryId: number,
+    category: Category,
     author: string,
     isbn: string,
     publisher: string,
     is_borrowing: boolean,
-    userId: number,
+    //userId: number,
   ): Promise<void> {
     await this.bookModel.update(
-      { name, categoryId, author, isbn, publisher, is_borrowing, userId },
+      { name, categoryId, category, author, isbn, publisher, is_borrowing /*, userId*/ },
       { where: { id } },
     );
   }
