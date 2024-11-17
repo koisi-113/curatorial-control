@@ -74,7 +74,7 @@ export class BookController {
   async showAddPage() {
     const add_book = await this.bookService.addBooks();
     const categories = await this.categoryService.readCategories();
-    return { posts: add_book, categories: categories};
+    return { posts: add_book, categories: categories };
   }
 
   //本の詳細情報ページ
@@ -83,14 +83,14 @@ export class BookController {
   async showDetail(@Param('id') id: string) {
     const book = await this.bookService.readBookById(parseInt(id));
     if (!book.category) {
-      console.log("Category is missing for the book:", book.id);
+      console.log('Category is missing for the book:', book.id);
     } else {
-      console.log("Category found:", book.category.name);
+      console.log('Category found:', book.category.name);
     }
-  
+
     return { book };
   }
-  
+
   //本の削除
   @Delete(':id')
   async deleteBookById(@Param('id') id: string, @Res() res: any) {
