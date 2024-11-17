@@ -17,7 +17,7 @@ export class CategoryService {
     await this.categoryModel.create({ name });
   }
   
-  async readCategory(id: string) {
+  async readCategory(id: number) {
     return await this.categoryModel.findByPk(id);
   }
 

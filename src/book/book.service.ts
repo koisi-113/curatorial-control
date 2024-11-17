@@ -21,7 +21,12 @@ export class BookService {
   }
 
   async readBookById(id: number): Promise<Book | null> {
-    return await this.bookModel.findByPk(id);
+    return await this.bookModel.findByPk(id, {
+      include: [{
+        model: Category,
+        attributes: ['name'],
+      }]
+    });
   }
 
   async readBookByName(name: string): Promise<Book[]> {
@@ -37,6 +42,7 @@ export class BookService {
   async createBook(
     name: string,
     categoryId: number,
+    category: Category,
     author: string,
     isbn: string,
     publisher: string,
@@ -46,6 +52,7 @@ export class BookService {
     await this.bookModel.create({
       name,
       categoryId,
+      category,
       author,
       isbn,
       publisher,

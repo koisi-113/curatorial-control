@@ -41,11 +41,13 @@ content %}
 
     <input id="name" name="name" type0="text" class="form-control" required>
     
-    <label for="category" class="fs-3 mb-2 fw-semibold">カテゴリID</label>
-    <select class="form-select" id="category" placeholder="項目を選択">
-      <option selected>{{category.name}}</option>
-      {% for category in categories%}
-      <option value="{{ category.id }}">{{ category.name }}</option>
+    <label for="categoryId" class="fs-3 mb-2 fw-semibold">カテゴリID</label>
+    <select class="form-select" id="categoryId" name="categoryId">
+      <option value="" disabled selected>--カテゴリ－を選択--</option>
+      {% for category in categories %}
+        <option value="{{ category.id }}">
+          {{ category.name }}
+        </option>
       {% endfor %}
     </select>
 
