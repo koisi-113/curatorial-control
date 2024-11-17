@@ -37,7 +37,7 @@ export class BookController {
   @Post('/add')
   async createBook(
     @Body('name') name: string,
-    @Body('categoryId') categoryId: number,
+    @Body('categoryId') categoryId: string,
     @Body('author') author: string,
     @Body('isbn') isbn: string,
     @Body('publisher') publisher: string,
@@ -45,9 +45,11 @@ export class BookController {
     @Body('userId') userId: number,
     @Res() res: any,
   ) {
+    const category = await this.categoryService.readCategory(categoryId);
     await this.bookService.createBook(
       name,
       categoryId,
+      category,
       author,
       isbn,
       publisher,
@@ -71,18 +73,24 @@ export class BookController {
   @Render('add_book.njk')
   async showAddPage() {
     const add_book = await this.bookService.addBooks();
-    return { posts: add_book };
+    const categories = await this.categoryService.readCategories();
+    return { posts: add_book, categories: categories};
   }
 
   //本の詳細情報ページ
   @Get(':id')
   @Render('detail_book.njk')
-  async showDetail(@Param('id') id: string, @Res() res: any) {
+  async showDetail(@Param('id') id: string) {
     const book = await this.bookService.readBookById(parseInt(id));
-    //bookオブジェクトが返ってなかったため修正したわよ
+    if (!book.category) {
+      console.log("Category is missing for the book:", book.id);
+    } else {
+      console.log("Category found:", book.category.name);
+    }
+  
     return { book };
   }
-
+  
   //本の削除
   @Delete(':id')
   async deleteBookById(@Param('id') id: string, @Res() res: any) {
