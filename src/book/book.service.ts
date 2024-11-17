@@ -41,7 +41,7 @@ export class BookService {
 
   async createBook(
     name: string,
-    categoryId: string,
+    categoryId: number,
     category: Category,
     author: string,
     isbn: string,

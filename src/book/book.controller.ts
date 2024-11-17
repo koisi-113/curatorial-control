@@ -37,7 +37,7 @@ export class BookController {
   @Post('/add')
   async createBook(
     @Body('name') name: string,
-    @Body('categoryId') categoryId: string,
+    @Body('categoryId') categoryId: number,
     @Body('author') author: string,
     @Body('isbn') isbn: string,
     @Body('publisher') publisher: string,
