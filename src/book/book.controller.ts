@@ -45,11 +45,9 @@ export class BookController {
     @Body('userId') userId: number,
     @Res() res: any,
   ) {
-    const category = await this.categoryService.readCategory(categoryId);
     await this.bookService.createBook(
       name,
       categoryId,
-      category,
       author,
       isbn,
       publisher,
@@ -115,12 +113,10 @@ export class BookController {
     //@Body('userId') userId: number,
     @Res() res: any,
   ) {
-    const category = await this.categoryService.readCategory(categoryId);
     await this.bookService.updateBook(
       parseInt(id),
       name,
       categoryId,
-      category,
       author,
       isbn,
       publisher,

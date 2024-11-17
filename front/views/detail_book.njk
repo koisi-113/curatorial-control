@@ -18,7 +18,7 @@
 
   <p class="fs-4"><b>出版社:</b> {{ book.publisher }}</p>
 
-  <p class="fs-4"><b>貸出状況:</b> {% if post.is_borrowing %} 貸出中 {% else %} 利用可能 {% endif %}</p>
+  <p class="fs-4"><b>貸出状況:</b> {% if book.is_borrowing %} 貸出中 {% else %} 利用可能 {% endif %}</p>
 </div>
 
 <div style="display: flex; gap: 10px; margin-top: 20px;">
