@@ -83,9 +83,9 @@ export class BookController {
   async showDetail(@Param('id') id: string) {
     const book = await this.bookService.readBookById(parseInt(id));
     if (!book.category) {
-      console.log("Category is missing for the book:", book.id);
+      console.log('Category is missing for the book:', book.id);
     } else {
-      console.log("Category found:", book.category.name);
+      console.log('Category found:', book.category.name);
     }
 
     return { book };
@@ -118,18 +118,20 @@ export class BookController {
     @Body('isbn') isbn: string,
     @Body('publisher') publisher: string,
     @Body('is_borrowing') is_borrowing: boolean,
-    @Body('userId') userId: number,
+    //@Body('userId') userId: number,
     @Res() res: any,
   ) {
+    const category = await this.categoryService.readCategory(categoryId);
     await this.bookService.updateBook(
       parseInt(id),
       name,
       categoryId,
+      category,
       author,
       isbn,
       publisher,
       is_borrowing,
-      userId,
+      //userId,
     );
     return res.redirect('/top/books');
   }
