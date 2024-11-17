@@ -18,7 +18,7 @@
 
   <p class="fs-4"><b>出版社:</b> {{ book.publisher }}</p>
 
-  <p class="fs-4"><b>貸出状況:</b> {% if post.is_borrowing %} 貸出中 {% else %} 利用可能 {% endif %}</p>
+  <p class="fs-4"><b>貸出状況:</b> {% if book.is_borrowing %} 貸出中 {% else %} 利用可能 {% endif %}</p>
 </div>
 
 <div style="display: flex; gap: 10px; margin-top: 20px;">
@@ -35,15 +35,8 @@
   action="/top/books/{{ book.id }}?_method=PUT" 
   method="POST" 
   style="display: inline;"
-  >
-    <input type="hidden" name="name" value="{{ book.name }}">
-    <input type="hidden" name="categoryId" value="{{ book.category.id }}"> 
-    <input type="hidden" name="author" value="{{ book.author }}">
-    <input type="hidden" name="isbn" value="{{ book.isbn }}">
-    <input type="hidden" name="publisher" value="{{ book.publisher }}">
+  > 
     <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
-    <input type="hidden" name="userId" value="{{ book.userId }}">
-  
     <button type="submit" class="btn btn-outline-primary btn-lg">
       {% if book.is_borrowing %}
         貸出を終了

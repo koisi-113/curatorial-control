@@ -44,7 +44,6 @@ export class BookService {
   async createBook(
     name: string,
     categoryId: number,
-    category: Category,
     author: string,
     isbn: string,
     publisher: string,
@@ -54,7 +53,6 @@ export class BookService {
     await this.bookModel.create({
       name,
       categoryId,
-      category,
       author,
       isbn,
       publisher,
@@ -71,7 +69,6 @@ export class BookService {
     id: number,
     name: string,
     categoryId: number,
-    category: Category,
     author: string,
     isbn: string,
     publisher: string,
@@ -79,7 +76,7 @@ export class BookService {
     //userId: number,
   ): Promise<void> {
     await this.bookModel.update(
-      { name, categoryId, category, author, isbn, publisher, is_borrowing /*, userId*/ },
+      { name, categoryId, author, isbn, publisher, is_borrowing /*, userId*/ },
       { where: { id } },
     );
   }
