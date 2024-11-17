@@ -25,7 +25,7 @@ export class BookService {
       include: [
         {
           model: Category,
-          attributes: ['name', 'id'],
+          attributes: ["name", "id"],
         },
       ],
     });
