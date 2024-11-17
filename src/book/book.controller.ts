@@ -74,7 +74,7 @@ export class BookController {
   async showAddPage() {
     const add_book = await this.bookService.addBooks();
     const categories = await this.categoryService.readCategories();
-    return { posts: add_book, categories: categories};
+    return { posts: add_book, categories: categories };
   }
 
   //本の詳細情報ページ
@@ -87,10 +87,10 @@ export class BookController {
     } else {
       console.log("Category found:", book.category.name);
     }
-  
+
     return { book };
   }
-  
+
   //本の削除
   @Delete(':id')
   async deleteBookById(@Param('id') id: string, @Res() res: any) {

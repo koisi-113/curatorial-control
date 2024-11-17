@@ -22,10 +22,12 @@ export class BookService {
 
   async readBookById(id: number): Promise<Book | null> {
     return await this.bookModel.findByPk(id, {
-      include: [{
-        model: Category,
-        attributes: ['name'],
-      }]
+      include: [
+        {
+          model: Category,
+          attributes: ["name"],
+        },
+      ],
     });
   }
 

@@ -18,11 +18,14 @@ content%}
     />
   </div>
   <div name="book-category">
-    <label for="category" class="fs-3 mb-2 fw-semibold">カテゴリ</label>
-    <select class="form-select" id="category" placeholder="項目を選択">
-      <option selected>{{book.category.name}}</option>
-      {% for category in categories%}
-      <option value="{{ category.id }}">{{ category.name }}</option>
+    <label for="categoryId" class="fs-3 mb-2 fw-semibold">カテゴリID</label>
+    <select class="form-select" id="categoryId" name="categoryId">
+      {% for category in categories %}
+        <option value="{{ category.id }}" 
+        {% if book.category.id == category.id %}selected{% endif %}
+        >
+          {{ category.name }}
+        </option>
       {% endfor %}
     </select>
   </div>
