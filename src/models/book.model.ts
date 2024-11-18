@@ -7,9 +7,11 @@ import {
   BelongsTo,
   PrimaryKey,
   AutoIncrement,
+  AllowNull,
 } from 'sequelize-typescript';
 import { User } from './user.model';
 import { Category } from './category.model';
+import { DefaultValuePipe } from '@nestjs/common';
 
 @Table({ tableName: 'book' })
 export class Book extends Model {
@@ -45,7 +47,10 @@ export class Book extends Model {
   is_borrowing: boolean;
 
   @ForeignKey(() => User)
-  @Column(DataType.INTEGER)
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+  })
   userId?: number;
 
   @BelongsTo(() => User)

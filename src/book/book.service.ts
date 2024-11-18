@@ -73,10 +73,10 @@ export class BookService {
     isbn: string,
     publisher: string,
     is_borrowing: boolean,
-    //userId: number,
+    userId: number,
   ): Promise<void> {
     await this.bookModel.update(
-      { name, categoryId, author, isbn, publisher, is_borrowing /*, userId*/ },
+      { name, categoryId, author, isbn, publisher, is_borrowing , userId },
       { where: { id } },
     );
   }

@@ -81,7 +81,9 @@ export class BookController {
   async showDetail(@Param('id') id: string) {
     const book = await this.bookService.readBookById(parseInt(id));
     const users = await this.userService.readUsers();
-    return { book, users };
+    const bollowedId = String(book.userId); 
+    const bollowedUser = await this.userService.readUser(bollowedId);
+    return { book, users, bollowedUser};
   }
 
   //本の削除
@@ -111,7 +113,7 @@ export class BookController {
     @Body('isbn') isbn: string,
     @Body('publisher') publisher: string,
     @Body('is_borrowing') is_borrowing: boolean,
-    //@Body('userId') userId: number,
+    @Body('userId') userId: number,
     @Res() res: any,
   ) {
     await this.bookService.updateBook(
@@ -122,7 +124,7 @@ export class BookController {
       isbn,
       publisher,
       is_borrowing,
-      //userId,
+      userId,
     );
     return res.redirect('/top/books');
   }
