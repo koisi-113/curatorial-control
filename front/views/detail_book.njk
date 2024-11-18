@@ -1,6 +1,10 @@
 {% extends "base.njk" %}
 
 {% block title %}本の詳細情報{% endblock %}
+{% block source %}
+<link rel="stylesheet" href="/modal.css" />
+<script src="/modal.js" defer></script>
+{% endblock %}
 
 {% block content %}
 <h1 class="ml-5 fw-bold mb-10" style="color: orange">
@@ -36,14 +40,34 @@
   method="POST" 
   style="display: inline;"
   > 
-    <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
-    <button type="submit" class="btn btn-outline-primary btn-lg">
+    <button class="btn btn-outline-primary btn-lg" id="modal-show">
       {% if book.is_borrowing %}
         貸出を終了
       {% else %}
         貸出する
       {% endif %}
     </button>
+
+    <!-- 貸出モーダルウィンドウ -->
+    <div class="modal-container" id="modal-container">
+      <div class="modal-body">
+        <button type="button" class="modal-close" id="modal-close">close</button>
+        <div class="modal-content">
+          <div class="inn">
+            {% if book.is_borrowing %}
+              <div>貸出を終了</div>
+            {% else %}
+              <div>貸出する</div>
+              <button class="btn btn-outline-primary btn-lg" id="modal-show">
+              
+              </button>
+            {% endif %}
+            <span class="en">テスト</span>
+            <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
+          </div>
+        </div>
+      </div>
+    </div>
   </form>
   
 
