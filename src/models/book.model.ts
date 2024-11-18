@@ -49,7 +49,7 @@ export class Book extends Model {
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
   })
   userId?: number;
 

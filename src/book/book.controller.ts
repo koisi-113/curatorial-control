@@ -45,16 +45,22 @@ export class BookController {
     @Body('userId') userId: number,
     @Res() res: any,
   ) {
-    await this.bookService.createBook(
-      name,
-      categoryId,
-      author,
-      isbn,
-      publisher,
-      is_borrowing,
-      userId,
-    );
-    return res.redirect('/top/books');
+    try{
+      await this.bookService.createBook(
+        name,
+        categoryId,
+        author,
+        isbn,
+        publisher,
+        is_borrowing,
+        userId,
+      );
+      return res.redirect('/top/books');
+    }catch (error) {
+      console.error('Error creating book:', error);
+      res.status(500).send('Error creating book');
+    }
+    
   }
 
   //検索結果ページを表示
