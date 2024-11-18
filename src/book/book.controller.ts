@@ -45,16 +45,22 @@ export class BookController {
     @Body('userId') userId: number,
     @Res() res: any,
   ) {
-    await this.bookService.createBook(
-      name,
-      categoryId,
-      author,
-      isbn,
-      publisher,
-      is_borrowing,
-      userId,
-    );
-    return res.redirect('/top/books');
+    try{
+      await this.bookService.createBook(
+        name,
+        categoryId,
+        author,
+        isbn,
+        publisher,
+        is_borrowing,
+        userId,
+      );
+      return res.redirect('/top/books');
+    }catch (error) {
+      console.error('Error creating book:', error);
+      res.status(500).send('Error creating book');
+    }
+    
   }
 
   //検索結果ページを表示
@@ -80,7 +86,10 @@ export class BookController {
   @Render('detail_book.njk')
   async showDetail(@Param('id') id: string) {
     const book = await this.bookService.readBookById(parseInt(id));
-    return { book };
+    const users = await this.userService.readUsers();
+    const bollowedId = String(book.userId); 
+    const bollowedUser = await this.userService.readUser(bollowedId);
+    return { book, users, bollowedUser};
   }
 
   //本の削除
@@ -110,7 +119,7 @@ export class BookController {
     @Body('isbn') isbn: string,
     @Body('publisher') publisher: string,
     @Body('is_borrowing') is_borrowing: boolean,
-    //@Body('userId') userId: number,
+    @Body('userId') userId: number,
     @Res() res: any,
   ) {
     await this.bookService.updateBook(
@@ -121,7 +130,7 @@ export class BookController {
       isbn,
       publisher,
       is_borrowing,
-      //userId,
+      userId,
     );
     return res.redirect('/top/books');
   }
