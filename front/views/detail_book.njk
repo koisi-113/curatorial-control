@@ -57,18 +57,26 @@
     <!-- モーダルウィンドウ -->
     <div class="modal-container" id="modal-container">
       <div class="modal-body">
-        <button type="button" class="modal-close" id="modal-close">close</button>
+        <button type="button" class="modal-close" id="modal-close">×</button>
         <div class="modal-content">
           <div class="inn">
             {% if book.is_borrowing %}
-              <div>貸出を終了</div>
-              <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
-              <button class="btn btn-outline-primary btn-lg" id="modal-show">
-                返却する
-              </button>
+              <div class="modal-header">
+                <h2>貸出を終了</h2>
+              </div>
+              <div>
+                <p>この本の貸し出しを終了しますか？</p>
+                <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
+                <button class="btn btn-outline-primary" id="modal-show">
+                  返却する
+                </button>
+              </div>
             {% else %}
-              <div>貸出する</div>
-                <label for="userId" class="fs-3 mb-2 fw-semibold">ユーザーID</label>
+              <div class="modal-header">
+                <h2>貸出する</h2>
+              </div>
+              <div>
+                <label for="userId" class="fs-3 mb-2 fw-semibold">借りるユーザー</label>
                 <select class="form-select" id="userId" name="userId">
                   <option value="" disabled selected>--ユーザーを選択--</option>
                   {% for user in users %}
@@ -82,7 +90,6 @@
                   借りる
                 </button>
             {% endif %}
-            
           </div>
         </div>
       </div>

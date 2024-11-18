@@ -1,54 +1,104 @@
-.modal-container {
+html, body {
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+  }
+
+/* モーダル全体の背景 */
+.modal-container {
     position: fixed;
     top: 0;
     left: 0;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    overflow: auto;
-    opacity: 0;
-    visibility: hidden;
-    transition: .3s ease-out;
-    z-index: 9;
-  }
-   
-  .modal-container::before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
+    width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+    display: none; /* 初期状態は非表示 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
-   
+  
   .modal-container.active {
-    opacity: 1;
-    visibility: visible;
+    display: flex; /* モーダルを表示 */
   }
-   
+  
+  /* モーダル本体 */
   .modal-body {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 500px;
+    background: #fff;
+    border-radius: 8px;
     width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+    padding: 20px; /* コンテンツ内側の余白 */
+    text-align: center;
   }
-   
+  
+  /* モーダルの中身 */
+  .modal-content {
+    padding: 20px;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .modal-body {
+    padding: 20px;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
   .modal-close {
     position: absolute;
-    top: -30px;
-    right: 0;
-    font-size: 14px;
-    color: #fff;
-    background: rgba(0,0,0,60%);
-    padding: 4px 15px;
+    top: 10px;
+    right: 10px;
+    width: 60px; /* 判定範囲を大きくする */
+    height: 60px; /* 判定範囲を大きくする */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 1.5rem;
+    background: #f8f9fa;
+    border: none;
     cursor: pointer;
-    border-radius: 5px 5px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-   
-  .modal-content {
-    background: #fff;
-    border: 2px solid #000;
-    text-align: left;
-    padding: 30px;
-    font-weight: bold;
+  
+  .modal-close:hover {
+    color: #333;
   }
+
+  .modal-close:active {
+    background: #dee2e6;
+  }
+  
+  /* セレクトボックス */
+  .form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+  }
+  
+  /* アニメーション */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

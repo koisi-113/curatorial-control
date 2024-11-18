@@ -14,14 +14,6 @@ function closeModal() {
   modalContainer.classList.remove('active');
 }
 
-// モーダルの外側クリックで閉じる処理
-document.addEventListener('click', (e) => {
-  if (e.target === modalContainer) {
-    // モーダルの外側がクリックされた場合
-    closeModal();
-  }
-});
-
 // モーダルのクローズボタンのクリックで閉じる
 modalCloseButton.addEventListener('click', () => {
   closeModal();
