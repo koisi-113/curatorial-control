@@ -48,7 +48,7 @@
       {% endif %}
     </button>
 
-    <!-- 貸出モーダルウィンドウ -->
+    <!-- モーダルウィンドウ -->
     <div class="modal-container" id="modal-container">
       <div class="modal-body">
         <button type="button" class="modal-close" id="modal-close">close</button>
@@ -56,14 +56,27 @@
           <div class="inn">
             {% if book.is_borrowing %}
               <div>貸出を終了</div>
+              <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
+              <button class="btn btn-outline-primary btn-lg" id="modal-show">
+                返却する
+              </button>
             {% else %}
               <div>貸出する</div>
-              <button class="btn btn-outline-primary btn-lg" id="modal-show">
-              
-              </button>
+                <label for="userId" class="fs-3 mb-2 fw-semibold">ユーザーID</label>
+                <select class="form-select" id="userId" name="userId">
+                  <option value="" disabled selected>--ユーザーを選択--</option>
+                  {% for user in users %}
+                    <option value="{{ user.id }}">
+                      {{ user.grade }} {{ user.name }}
+                    </option>
+                  {% endfor %}
+                </select>
+                <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
+                <button class="btn btn-outline-primary btn-lg" id="modal-show">
+                  借りる
+                </button>
             {% endif %}
-            <span class="en">テスト</span>
-            <input type="hidden" name="is_borrowing" value="{% if book.is_borrowing %}false{% else %}true{% endif %}">
+            
           </div>
         </div>
       </div>

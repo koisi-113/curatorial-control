@@ -80,7 +80,8 @@ export class BookController {
   @Render('detail_book.njk')
   async showDetail(@Param('id') id: string) {
     const book = await this.bookService.readBookById(parseInt(id));
-    return { book };
+    const users = await this.userService.readUsers();
+    return { book, users };
   }
 
   //本の削除
