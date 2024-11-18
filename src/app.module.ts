@@ -10,7 +10,7 @@ import { UserModule } from './user/user.module';
   imports: [
     SequelizeModule.forRoot({
       dialect: 'sqlite',
-      host: ':memory:',
+      storage: 'database.sqlite',
       autoLoadModels: true,
       synchronize: true,
     }),
