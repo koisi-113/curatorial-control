@@ -122,6 +122,7 @@ export class BookController {
     @Body('userId') userId: number,
     @Res() res: any,
   ) {
+    console.log("更新しました。");
     await this.bookService.updateBook(
       parseInt(id),
       name,
@@ -132,6 +133,7 @@ export class BookController {
       is_borrowing,
       userId,
     );
+    
     return res.redirect('/top/books');
   }
 }
