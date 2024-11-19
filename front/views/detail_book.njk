@@ -6,7 +6,16 @@ source %}
 <h1 class="ml-5 fw-bold mb-10" style="color: orange">
   「{{ book.name }}」の詳細情報
 </h1>
-
+<div style="text-align: right;">
+<form
+    class="text-right"
+    action="/top/books/{{ book.id }}?_method=DELETE"
+    method="POST"
+    style="display: inline; margin-left: auto"
+  >
+    <button type="submit" class="btn btn-outline-danger btn-lg">削除</button>
+  </form>
+</div>
 <div class="ml-4">
   <p class="fs-4"><b>著書名:</b> {{ book.name }}</p>
 
@@ -104,13 +113,6 @@ source %}
     </div>
   </form>
 
-  <form
-    class="text-right"
-    action="/top/books/{{ book.id }}?_method=DELETE"
-    method="POST"
-    style="display: inline; margin-left: auto"
-  >
-    <button type="submit" class="btn btn-outline-danger btn-lg">削除</button>
-  </form>
+  
 </div>
 {% endblock %}

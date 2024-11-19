@@ -23,13 +23,13 @@ export class CategoryController {
   }
 
   @Get('/add')
-  @Render('category-form.njk')
+  @Render('category_form.njk')
   async renderCategoryForm() {
     return {};
   }
 
   @Get(':id')
-  @Render('update-category.njk')
+  @Render('update_category.njk')
   async showUpdateUserForm(@Param('id') id: string) {
     const category = await this.categoryService.readCategory(parseInt(id));
     return { category };
