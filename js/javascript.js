@@ -25,6 +25,7 @@ async function handleSubmit(event) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        id,
         name,
         categoryId: parseInt(categoryId),
         author,

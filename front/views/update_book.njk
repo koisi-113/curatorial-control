@@ -4,7 +4,7 @@ content%}
   「{{book.name}}」の詳細情報
 </h1>
 
-<form method="handleSubmit(event)" class="form-floating ml-4 mb-3">
+<form method=action="/top/books/{{ user.id }}?_method=PUT" method="POST" class="form-floating ml-4 mb-3">
   <input type="hidden" id="id" value="{{book.id}}" />
   <div name="book-name">
     <label for="name" class="fs-3 mb-2 fw-semibold">著書名</label>
@@ -65,12 +65,12 @@ content%}
   <input type="hidden" id="is_borrowing" value="book.is_borrowing" />
   <div style="display: flex; justify-content: space-between; margin-top: 20px">
     <button
-      type="button"
+      type="submit"
       class="btn btn-outline-danger btn-lg"
-      onclick="handleSubmit(event)"
     >
       更新する
     </button>
+    </form>
     <button
       type="button"
       class="btn btn-outline-danger btn-lg"
@@ -79,7 +79,7 @@ content%}
       キャンセル
     </button>
   </div>
-</form>
+
 {#
 {%endblock%} {%block scripts%}
 <script>
