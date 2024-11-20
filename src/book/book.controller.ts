@@ -28,6 +28,7 @@ export class BookController {
   @Render('books.njk')
   async renderIndex() {
     const books = await this.bookService.readBooks();
+    await this.bookService.getBookImageFromNDL("9784295007807");
     //const users = await this.userService.readUsers();
     //const categories = await this.categoryService.readCategories();
     return { posts: books };
