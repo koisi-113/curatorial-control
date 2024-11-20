@@ -5,6 +5,10 @@ import { User } from '../models/user.model';
 import { Category } from '../models/category.model';
 import { Op } from 'sequelize';
 
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+import { DOMParser } from 'xmldom';
+
 @Injectable()
 export class BookService {
   constructor(
@@ -80,4 +84,54 @@ export class BookService {
       { where: { id } },
     );
   }
+
+
+  //isbnコードを取得するメソッド
+  async getBookImageFromNDL(isbn: string): Promise<string | undefined> {
+    const apiURL = `https://iss.ndl.go.jp/api/opensearch?isbn=${isbn}&format=xml`;
+
+    try {
+        // NDL APIからデータを取得
+        const response = await axios.get(apiURL, { responseType: 'text' });
+        const xmlText = response.data;
+
+        // xmldom の DOMParser を使用して XML をパース
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+        // 最初の <item> 要素を取得
+        const firstItem = xmlDoc.getElementsByTagName("item")[0];
+        if (!firstItem) {
+            console.error("該当する書籍が見つかりません。");
+            return;
+        }
+
+        // 書籍の詳細ページURLを取得
+        const link = firstItem.getElementsByTagName("link")[0]?.textContent;
+        if (!link) {
+            console.error("書籍詳細ページのリンクが見つかりません。");
+            return;
+        }
+
+        //console.log("書籍ページURL:", link);
+
+        // 書籍ページから画像URLを取得
+        const bookPageResponse = await axios.get(link);
+        const bookPageHTML = bookPageResponse.data;
+
+        // cheerioでHTMLをパースして画像URLを抽出
+        const $ = cheerio.load(bookPageHTML);
+        const imageUrl = $('meta[property="og:image"]').attr('content');
+
+        if (imageUrl) {
+            //console.log("画像URL:", imageUrl);
+            return imageUrl;
+        } else {
+            console.error("画像が見つかりません。");
+        }
+      } catch (error) {
+        console.error("エラーが発生しました:", error);
+    }
+  }
+  
 }

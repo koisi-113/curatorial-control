@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import * as methodOverride from 'method-override';
+const methodOverride = require('method-override');
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as nunjucks from 'nunjucks';

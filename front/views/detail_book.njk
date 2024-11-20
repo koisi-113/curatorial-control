@@ -16,22 +16,27 @@ source %}
     <button type="submit" class="btn btn-outline-danger btn-lg">削除</button>
   </form>
 </div>
-<div class="ml-4">
-  <p class="fs-4"><b>著書名:</b> {{ book.name }}</p>
+<div style="display: flex; align-items: flex-start; gap: 20px;">
+  <div class="ml-4" style="flex: 1;">
+    <p class="fs-4"><b>著書名:</b> {{ book.name }}</p>
 
-  <p class="fs-4"><b>カテゴリ:</b> {{ book.category.name }}</p>
+    <p class="fs-4"><b>カテゴリ:</b> {{ book.category.name }}</p>
 
-  <p class="fs-4"><b>著者名:</b> {{ book.author }}</p>
+    <p class="fs-4"><b>著者名:</b> {{ book.author }}</p>
 
-  <p class="fs-4"><b>ISBN番号:</b> {{ book.isbn }}</p>
+    <p class="fs-4"><b>ISBN番号:</b> {{ book.isbn }}</p>
 
-  <p class="fs-4"><b>出版社:</b> {{ book.publisher }}</p>
+    <p class="fs-4"><b>出版社:</b> {{ book.publisher }}</p>
 
-  <p class="fs-4">
-    <b>貸出状況:</b>
-    {% if book.is_borrowing %} 貸出中 ： {{ bollowedUser.grade }} {{
-    bollowedUser.name }} {% else %} 利用可能 {% endif %}
-  </p>
+    <p class="fs-4">
+      <b>貸出状況:</b>
+      {% if book.is_borrowing %} 貸出中 ： {{ bollowedUser.grade }} {{
+      bollowedUser.name }} {% else %} 利用可能 {% endif %}
+    </p>
+  </div>
+  <diV style="flex: 0 0 auto;">
+    <img src="{{imgUrl}}" style="max-width: 300px; width: 100%; height: auto;" alt="Book Image">
+  </div>
 </div>
 
 <div style="display: flex; gap: 10px; margin-top: 20px">
