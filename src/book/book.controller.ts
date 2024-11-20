@@ -28,7 +28,6 @@ export class BookController {
   @Render('books.njk')
   async renderIndex() {
     const books = await this.bookService.readBooks();
-    await this.bookService.getBookImageFromNDL("9784295007807");
     //const users = await this.userService.readUsers();
     //const categories = await this.categoryService.readCategories();
     return { posts: books };
@@ -90,7 +89,9 @@ export class BookController {
     const users = await this.userService.readUsers();
     const bollowedId = String(book.userId); 
     const bollowedUser = await this.userService.readUser(bollowedId);
-    return { book, users, bollowedUser};
+    //isbn値を取得
+    const imgUrl = await this.bookService.getBookImageFromNDL(book.isbn);
+    return { book, users, bollowedUser, imgUrl};
   }
 
   //本の削除

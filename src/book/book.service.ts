@@ -4,6 +4,7 @@ import { Book } from '../models/book.model';
 import { User } from '../models/user.model';
 import { Category } from '../models/category.model';
 import { Op } from 'sequelize';
+
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { DOMParser } from 'xmldom';
@@ -84,6 +85,8 @@ export class BookService {
     );
   }
 
+
+  //isbnコードを取得するメソッド
   async getBookImageFromNDL(isbn: string): Promise<string | undefined> {
     const apiURL = `https://iss.ndl.go.jp/api/opensearch?isbn=${isbn}&format=xml`;
 
@@ -121,7 +124,7 @@ export class BookService {
         const imageUrl = $('meta[property="og:image"]').attr('content');
 
         if (imageUrl) {
-            console.log("画像URL:", imageUrl);
+            //console.log("画像URL:", imageUrl);
             return imageUrl;
         } else {
             console.error("画像が見つかりません。");
